@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Flash Game</title>
+    <style>
+        body { 
+            background-color: #1a1a1a; 
+            color: #fff; 
+            text-align: center; 
+            font-family: sans-serif; 
+            margin-top: 50px; 
+        }
+        #player-container { 
+            width: 800px; 
+            height: 600px; 
+            margin: 20px auto; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Game Module</h1>
+    
+    <!-- This is where Ruffle will load the game -->
+    <div id="player-container"></div>
+
+    <!-- This loads Ruffle automatically from the web (no extra files needed in your folder!) -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("player-container");
+            container.appendChild(player);
+            // Point this to your uploaded .swf file name
+            player.load("game.swf");
+        });
+    </script>
+
+</body>
+</html>
